@@ -24,23 +24,22 @@ async function queryWithAI() {
   });
 
   const query =
-    "Get count of numbers greater than or equal to 2 from the table testtable. numbers are n";
+    "Create a new table called spongebobcharacters and add 5 random characters from Spongebob as strings. The characters will be called character";
   const messages = [
     new SystemMessage(
-      `Convert the statement into a Postgres SQL query. 
-      Just the query itself, no other AI boilerplate. 
-      Keep it as short and simple as possible.
-      Remove whitespace and make sure the entire query is on one line.
+      `
+      Convert the statement into a Postgres SQL query. 
+      Just the query itself, no other AI boilerplate.
+      Remove unecessary whitespace, ensure the entire query is on one line.
       `
     ),
     new HumanMessage(query),
   ];
 
   const result = await model.invoke(messages);
-  // console.log(result.content);
 
-  const response = await db.run(result.content as string);
-  console.log(response);
+  await db.run(result.content as string);
+  console.log(result.content);
 }
 
 queryWithAI();
