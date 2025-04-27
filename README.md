@@ -1,1 +1,2 @@
-Learning the basics of LangChain while incorporating it with tools like Firecrawl and Puppeteer.
+# Langchain Testing
+A sandbox for me to test LangChain tooling.
